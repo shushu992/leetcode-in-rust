@@ -8,3 +8,4 @@ mod binary_search;
 mod majority_element;
 mod container_with_most_water;
 mod roman_to_integer;
+mod generate_parentheses;
