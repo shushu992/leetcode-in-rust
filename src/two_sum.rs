@@ -2,14 +2,20 @@ use std::ops::Rem;
 
 /**
  * https://leetcode.com/problems/two-sum/
+ *
+ * Constraints:
+ * 2 <= nums.length <= 10^4
+ * -10^9 <= nums[i] <= 10^9
+ * -10^9 <= target <= 10^9
  */
+#[allow(unused)]
 fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     assert!(2 <= nums.len() && nums.len() <= 10000);
 
     let mut buckets: [Vec<(i32, usize)>; 4096] = std::array::from_fn(|_| vec![]);
 
     for (pos1, &num1) in nums.iter().enumerate() {
-        let remainder = num1.rem(4096).abs() as usize;
+        let remainder = num1.rem(4096).unsigned_abs() as usize;
 
         let complement = target.abs_diff(remainder as i32).rem(4096) as usize;
         for &(num2, pos2) in buckets[complement].iter() {
