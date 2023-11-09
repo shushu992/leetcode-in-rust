@@ -9,3 +9,4 @@ mod majority_element;
 mod container_with_most_water;
 mod roman_to_integer;
 mod generate_parentheses;
+mod remove_duplicates_from_sorted_array;
