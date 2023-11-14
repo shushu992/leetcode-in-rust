@@ -1,5 +1,3 @@
-use std::cmp::min;
-
 /**
  * https://leetcode.com/problems/container-with-most-water/
  *
@@ -12,56 +10,8 @@ use std::cmp::min;
  */
 #[allow(unused)]
 fn max_area(height: Vec<i32>) -> i32 {
-    let mut l = 0_usize;
-    let mut r = height.len() - 1;
-
-    loop {
-        if l == r {
-            return 0;
-        }
-
-        if height[l] > 0 {
-            break;
-        }
-
-        l += 1;
-    }
-
-    loop {
-        if r == l {
-            return 0;
-        }
-
-        if height[r] > 0 {
-            break;
-        }
-
-        r -= 1;
-    }
-
-    loop {
-        let mut mutted = false;
-
-        for l1 in l + 1..r {
-            if height[l1] * (r as i32 - l1 as i32) > height[l] * (r as i32 - l as i32) {
-                l = l1;
-                mutted = true;
-            }
-        }
-
-        for r1 in l + 1..r {
-            if height[r1] * (r1 as i32 - l as i32) > height[r] * (r as i32 - l as i32) {
-                r = r1;
-                mutted = true;
-            }
-        }
-
-        if !mutted {
-            break;
-        }
-    }
-
-    min(height[l], height[r]) * (r as i32 - l as i32)
+    // todo
+    0
 }
 
 #[test]

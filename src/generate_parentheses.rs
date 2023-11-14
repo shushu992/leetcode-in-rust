@@ -6,10 +6,7 @@
  */
 #[allow(unused)]
 fn generate_parenthesis(n: i32) -> Vec<String> {
-    vec![]
-}
-
-fn add_a_parenthesis(s: String) -> Vec<String> {
+    // todo
     vec![]
 }
 

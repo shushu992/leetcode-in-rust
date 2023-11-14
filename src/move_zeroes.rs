@@ -1,6 +1,7 @@
 /**
  * https://leetcode.com/problems/move-zeroes/
  */
+#[allow(unused)]
 fn move_zeroes(nums: &mut Vec<i32>) {
     let mut zero_count = 0;
     let len = nums.len();

@@ -1,6 +1,7 @@
 /**
  * https://leetcode.com/problems/single-number/
  */
+#[allow(unused)]
 fn single_number(nums: Vec<i32>) -> i32 {
     let mut sum = 0_i32;
 

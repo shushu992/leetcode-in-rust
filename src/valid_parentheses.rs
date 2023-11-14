@@ -1,7 +1,8 @@
 /**
  * https://leetcode.com/problems/valid-parentheses/
  */
-pub fn is_valid(s: String) -> bool {
+#[allow(unused)]
+fn is_valid(s: String) -> bool {
     let mut stack = Vec::<char>::with_capacity(s.len());
 
     for c in s.chars() {
