@@ -11,3 +11,4 @@ mod roman_to_integer;
 mod generate_parentheses;
 mod remove_duplicates_from_sorted_array;
 mod rotate_image;
+mod first_missing_positive;
