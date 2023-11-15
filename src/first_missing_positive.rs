@@ -7,12 +7,12 @@
  */
 #[allow(unused)]
 fn first_missing_positive(mut nums: Vec<i32>) -> i32 {
-    let mut max = nums.len();
+    let mut size = nums.len();
     let mut count = 0_usize;
 
     loop {
-        for i in 0..max {
-            if 0 < nums[i] && nums[i] <= max as i32 {
+        for i in 0..size {
+            if 0 < nums[i] && nums[i] <= size as i32 {
                 nums[i - count] = nums[i];
             } else {
                 count += 1;
@@ -20,67 +20,75 @@ fn first_missing_positive(mut nums: Vec<i32>) -> i32 {
         }
 
         if count == 0 {
-            return (max + 1) as i32;
+            break;
         }
 
-        max -= count;
+        size -= count;
         count = 0;
     }
 
-    // todo
+    for i in 0..size {
+        let seat = nums[i] as usize - 1;
+        sit(&mut nums, seat);
+    }
+
+    for i in 0..size {
+        if nums[i] != i as i32 + 1 {
+            return i as i32 + 1;
+        }
+    }
+
+    (size + 1) as i32
+}
+
+fn sit(nums: &mut Vec<i32>, seat: usize) {
+    if nums[seat] == (seat + 1) as i32 {
+        return;
+    }
+
+    let next = nums[seat] - 1;
+    nums[seat] = (seat + 1) as i32;
+    sit(nums, next as usize);
 }
 
 #[test]
-fn test_1() {
-    assert_eq!(first_missing_positive(vec![1, 2, 0]), 3);
-}
+fn test_1() { assert_eq!(first_missing_positive(vec![1, 2, 0]), 3); }
 
 #[test]
-fn test_2() {
-    assert_eq!(first_missing_positive(vec![3, 4, -1, 1]), 2);
-}
+fn test_2() { assert_eq!(first_missing_positive(vec![3, 4, -1, 1]), 2); }
 
 #[test]
-fn test_3() {
-    assert_eq!(first_missing_positive(vec![7, 8, 9, 11, 12]), 1);
-}
+fn test_3() { assert_eq!(first_missing_positive(vec![7, 8, 9, 11, 12]), 1); }
 
 #[test]
-fn test_4() {
-    assert_eq!(first_missing_positive(vec![1, 2, 3]), 4);
-}
+fn test_10() { assert_eq!(first_missing_positive(vec![1, 2, 3]), 4); }
 
 #[test]
-fn test_5() {
-    assert_eq!(first_missing_positive(vec![-1]), 1);
-}
+fn test_11() { assert_eq!(first_missing_positive(vec![-1]), 1); }
 
 #[test]
-fn test_6() {
-    assert_eq!(first_missing_positive(vec![0]), 1);
-}
+fn test_12() { assert_eq!(first_missing_positive(vec![0]), 1); }
 
 #[test]
-fn test_7() {
-    assert_eq!(first_missing_positive(vec![1]), 2);
-}
+fn test_13() { assert_eq!(first_missing_positive(vec![1]), 2); }
 
 #[test]
-fn test_8() {
-    assert_eq!(first_missing_positive(vec![2]), 1);
-}
+fn test_14() { assert_eq!(first_missing_positive(vec![2]), 1); }
 
 #[test]
-fn test_9() {
-    assert_eq!(first_missing_positive(vec![1, 1]), 2);
-}
+fn test_15() { assert_eq!(first_missing_positive(vec![2, 1]), 3); }
 
 #[test]
-fn test_10() {
-    assert_eq!(first_missing_positive(vec![1, 1, 1]), 2);
-}
+fn test_16() { assert_eq!(first_missing_positive(vec![3, 2, 1]), 4); }
 
 #[test]
-fn test_11() {
-    assert_eq!(first_missing_positive(vec![2, 1]), 3);
-}
+fn test_17() { assert_eq!(first_missing_positive(vec![1, 2, 4, 5, 7, 8]), 3); }
+
+#[test]
+fn test_20() { assert_eq!(first_missing_positive(vec![1, 1]), 2); }
+
+#[test]
+fn test_21() { assert_eq!(first_missing_positive(vec![1, 1, 1]), 2); }
+
+#[test]
+fn test_22() { assert_eq!(first_missing_positive(vec![1, 1, 2]), 3); }
