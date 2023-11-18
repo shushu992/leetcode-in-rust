@@ -12,3 +12,4 @@ mod generate_parentheses;
 mod remove_duplicates_from_sorted_array;
 mod rotate_image;
 mod first_missing_positive;
+mod longest_substring_without_repeated_characters;
