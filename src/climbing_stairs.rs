@@ -6,18 +6,14 @@
  */
 #[allow(unused)]
 fn climb_stairs(n: u8) -> u32 {
-    let arr = &mut Vec::<u32>::with_capacity(45);
+    let mut a = 1;
+    let mut b = 1;
 
-    arr.push(0);
-    arr.push(1);
-    arr.push(2);
-
-    for i in 3..=n {
-        let sum = arr[(i - 1) as usize] + arr[(i - 2) as usize];
-        arr.push(sum);
+    for _ in 2..=n {
+        (a, b) = (b, a + b);
     }
 
-    arr[n as usize]
+    b
 }
 
 #[test]

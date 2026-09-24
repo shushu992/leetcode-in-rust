@@ -20,7 +20,7 @@ fn search_sub(nums: &[i32], target: i32, from: usize, to: usize) -> isize {
         return -1;
     }
 
-    if (to - from) % 2 == 0 {
+    if (to - from).is_multiple_of(2) {
         let l = search_sub(nums, target, from, from + (to - from) / 2);
         if l >= 0 {
             return l;
