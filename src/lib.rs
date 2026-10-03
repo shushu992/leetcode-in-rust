@@ -14,3 +14,4 @@ mod rotate_image;
 mod first_missing_positive;
 mod longest_substring_without_repeated_characters;
 mod print_in_order;
+mod print_foobar_alternately;
